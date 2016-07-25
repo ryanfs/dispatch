@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20160725005004) do
     t.string   "zip"
     t.integer  "addressable_id"
     t.string   "addressable_type"
+    t.integer  "organization_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
@@ -33,29 +34,33 @@ ActiveRecord::Schema.define(version: 20160725005004) do
     t.integer  "address_id"
     t.string   "contact_person"
     t.text     "notes"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.integer  "organization_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   add_index "customers", ["address_id", "title"], name: "index_customers_on_address_id_and_title"
 
   create_table "organizations", force: :cascade do |t|
     t.text     "name"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "products", force: :cascade do |t|
     t.text     "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "organization_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "services", force: :cascade do |t|
     t.text     "title"
     t.integer  "color"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "organization_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "tickets", force: :cascade do |t|
@@ -65,9 +70,10 @@ ActiveRecord::Schema.define(version: 20160725005004) do
     t.integer  "customer_id"
     t.integer  "truck_id"
     t.integer  "product_id"
+    t.integer  "organization_id"
     t.text     "notes"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   add_index "tickets", ["address_id"], name: "index_tickets_on_address_id"
@@ -80,8 +86,9 @@ ActiveRecord::Schema.define(version: 20160725005004) do
     t.string   "name"
     t.string   "phone"
     t.string   "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "organization_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "users", force: :cascade do |t|

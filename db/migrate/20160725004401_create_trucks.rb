@@ -4,6 +4,7 @@ class CreateTrucks < ActiveRecord::Migration
       t.string :name
       t.string :phone
       t.string :email
+      t.references :organization
 
       t.timestamps null: false
     end

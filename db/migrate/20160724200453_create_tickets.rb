@@ -7,6 +7,7 @@ class CreateTickets < ActiveRecord::Migration
       t.references :customer
       t.references :truck
       t.references :product
+      t.references :organization
       t.text :notes
 
       t.timestamps null: false

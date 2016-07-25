@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     authenticated :user do
       root 'dashboard#index', as: :authenticated_root
       get '/users/sign_out' => 'devise/sessions#destroy'
+      resources :customers, :addresses, :tickets, :products, :services, :trucks
       #resources :events, :contacts, :leadgens
     end
 

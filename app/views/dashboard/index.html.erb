@@ -1,2 +1,13 @@
-<p>Dashboard</p>
-<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+<h1>Dashboard</h1>
+<h2>Customers</h2>
+<p><a href="#" id="customer-accordion">Add new customer</a></p>
+<ol>
+<% @customers.each do |customer| %>
+  <li><%= customer.title %></li>
+<% end %>
+</ol>
+  <section id="add-new-customer">
+    <%= render partial: "customers/new" %>
+  </section>
+
+<p><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></p>

@@ -6,6 +6,7 @@ class CreateCustomers < ActiveRecord::Migration
       t.references :address
       t.string :contact_person
       t.text :notes
+      t.references :organization
 
       t.timestamps null: false
     end
