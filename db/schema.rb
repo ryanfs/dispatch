@@ -11,7 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160724190054) do
+ActiveRecord::Schema.define(version: 20160725005004) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.string   "line1"
+    t.string   "line2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.integer  "addressable_id"
+    t.string   "addressable_type"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "addresses", ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
+
+  create_table "customers", force: :cascade do |t|
+    t.string   "title"
+    t.string   "company"
+    t.integer  "address_id"
+    t.string   "contact_person"
+    t.text     "notes"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "customers", ["address_id", "title"], name: "index_customers_on_address_id_and_title"
 
   create_table "organizations", force: :cascade do |t|
     t.text     "name"
@@ -19,8 +45,47 @@ ActiveRecord::Schema.define(version: 20160724190054) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "products", force: :cascade do |t|
+    t.text     "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.text     "title"
+    t.integer  "color"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tickets", force: :cascade do |t|
+    t.text     "title"
+    t.integer  "address_id"
+    t.integer  "service_id"
+    t.integer  "customer_id"
+    t.integer  "truck_id"
+    t.integer  "product_id"
+    t.text     "notes"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "tickets", ["address_id"], name: "index_tickets_on_address_id"
+  add_index "tickets", ["customer_id"], name: "index_tickets_on_customer_id"
+  add_index "tickets", ["product_id"], name: "index_tickets_on_product_id"
+  add_index "tickets", ["service_id"], name: "index_tickets_on_service_id"
+  add_index "tickets", ["truck_id"], name: "index_tickets_on_truck_id"
+
+  create_table "trucks", force: :cascade do |t|
+    t.string   "name"
+    t.string   "phone"
+    t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
-    t.string   "name",                                null: false
+    t.string   "name",                   default: "", null: false
     t.integer  "organization_id"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
