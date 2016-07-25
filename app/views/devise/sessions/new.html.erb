@@ -1,0 +1,34 @@
+<%= render 'layouts/login_header' %>
+<div class="panel panel-default front">
+  <div class="panel-body">
+    <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+
+      <div class="form-group top-body">
+        <% f.label :email %>
+        <%= f.email_field :email, class: "form-control login-form", placeholder:"Email", :autofocus => true %>
+      </div>
+
+      <div class="form-group">
+        <% f.label :password %>
+        <%= f.password_field :password, placeholder:"Password", class: "form-control login-form" %>
+      </div>
+
+      <div class="form-group checkbox-left">
+        <div class="checkbox">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      </div>
+
+      <div class="form-group login-button">
+        <%= f.submit "Sign in" %>
+      </div>
+    <% end %>
+    <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+
+<% end %>
+  </div>
+  <div class="panel-footer">
+      <%= link_to "Forgot your password?", new_password_path(resource_name) %>
+  </div>
+</div>
