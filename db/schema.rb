@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 20160725005004) do
     t.string   "zip"
     t.integer  "addressable_id"
     t.string   "addressable_type"
-    t.integer  "organization_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end

@@ -8,14 +8,17 @@ class CustomersController < ApplicationController
   end
 
   def new
+    @customers = Customer.all
     @customer = Customer.new
-    @customer.build_address
+    @customer.create_address
   end
+
+
 
   def create
     @customer = Customer.new(customer_params)
     @customer.organization = current_user.organization
-    @customer.save
+    @customer.address = Address.new(customer_params['address_attributes'])
     if @customer.save
       redirect_to @customer, notice: 'Customer was successfully created.'
     else
@@ -26,7 +29,7 @@ class CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:title, :company, :contact_person, :notes)
+    params.require(:customer).permit(:title, :company, :contact_person, :notes, address_attributes: [:line1, :line2, :city, :state, :zip])
   end
 
 end

@@ -1,0 +1,5 @@
+<ol>
+  <% @customers.each do |customer| %>
+    <li><%= customer.title %>, <%= customer.address.line1 %>,<%= customer.address.state %></li>
+  <% end %>
+</ol>

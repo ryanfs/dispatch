@@ -1,0 +1,53 @@
+<div>
+<%= form_for @customer do |f| %>
+ <section>
+  <p>
+    <%= f.label :title, 'Label' %><br />
+    <%= f.text_field :title, placeholder: "Roselle - East Orange"  %>
+  </p>
+
+  <p>
+    <%= f.label :company, 'Company Name' %><br />
+    <%= f.text_field :company, placeholder: "Roselle Disposal"  %>
+  </p>
+
+  <p>
+    <%= f.label :contact_person, 'Contact Person' %><br />
+    <%= f.text_field :contact_person, placeholder: "Keith Salerno"  %>
+  </p>
+
+  <p>
+    <%= f.label :notes, 'Notes' %><br />
+    <%= f.text_area :notes, placeholder: "Usually late..."  %>
+  </p>
+
+  <%= f.fields_for :address do |address_fields|%>
+    <p>
+      <%= address_fields.label :line1, 'Address 1' %><br />
+      <%= address_fields.text_field :line1 %>
+    </p>
+
+    <p>
+      <%= address_fields.label :line2, 'Address 2' %><br />
+      <%= address_fields.text_field :line2 %>
+    </p>
+
+    <p>
+      <%= address_fields.label :city %><br />
+      <%= address_fields.text_field :city %>
+    </p>
+
+    <p>
+      <%= address_fields.label :state %><br />
+      <%= address_fields.text_field :state, :size => 2 %>
+    </p>
+
+    <p>
+      <%= address_fields.label :zip, 'Zip Code' %><br />
+      <%= address_fields.text_field :zip %>
+    </p>
+  <% end %>
+
+    <%= f.submit 'Add Customer', class: 'btn btn-info' %>
+  </section>
+<% end %>
