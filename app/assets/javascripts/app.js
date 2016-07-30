@@ -1,4 +1,4 @@
-angular.module('flapperNews', [])
+angular.module('trash', ['ui.router','templates','Devise'])
 .config([
 '$stateProvider',
 '$urlRouterProvider',
@@ -7,44 +7,14 @@ function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('home', {
       url: '/home',
-      templateUrl: '/home.html',
+      templateUrl: 'home/_home.html',
       controller: 'MainCtrl'
+    })
+    .state('customers', {
+      url: '/customers/{id}',
+      templateUrl: 'customers/_index.html',
+      controller: 'CustomersCtrl'
     });
 
-  $urlRouterProvider.otherwise('home');
-}])
-.factory('posts', [function(){
-    var o = {
-    posts: [
-      {title: 'post 1', upvotes: 5, link: 'http://google.com'},
-      {title: 'post 2', upvotes: 2}
-    ]}
-  return o;
-}])
-.controller('MainCtrl', [
-'$scope',
-'posts',
-function($scope, posts){
-
-$scope.posts = posts.posts;
-
-
-$scope.addPost = function(){
-  if(!$scope.title || $scope.title === '') { return; }
-  $scope.posts.push({
-    title: $scope.title,
-    link: $scope.link,
-    upvotes: 0
-  });
-  $scope.title = '';
-  $scope.link = '';
-};
-
-$scope.incrementUpvotes = function(post) {
-  post.upvotes += 1;
-};
-
-
+    $urlRouterProvider.otherwise('home');
 }]);
-
-

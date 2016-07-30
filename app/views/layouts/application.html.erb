@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Dispatch</title>
-  <%= javascript_include_tag "application" %>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <title>Trash</title>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-  <% flash.each do |name, message| %>
-    <%= content_tag(:div, message, class: "alert alert-#{name}") %>
-  <% end %>
-<%= yield %>
-
+<body ng-app="trash">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="col-md-6 col-md-offset-3">
+        <div ng-include="'nav/_nav.html'"></div>
+        <ui-view></ui-view>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

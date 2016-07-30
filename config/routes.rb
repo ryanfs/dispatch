@@ -1,15 +1,11 @@
 Rails.application.routes.draw do
   resources :tickets
   devise_for :users
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root to: 'application#angular'
 
   devise_scope :user do
     authenticated :user do
-      root 'dashboard#index', as: :authenticated_root
+      # root 'dashboard#index', as: :authenticated_root
       get '/users/sign_out' => 'devise/sessions#destroy'
       resources :customers, :addresses, :tickets, :products, :services, :trucks
       #resources :events, :contacts, :leadgens

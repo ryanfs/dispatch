@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 ruby '1.9.3'
 
+gem 'angular_rails_csrf'
+gem 'responders'
+gem 'angular-rails-templates'
 gem 'rails', '4.2.3'
 gem 'pg', '~> 0.18.4'
 gem 'mime-types', '2.6.2'
