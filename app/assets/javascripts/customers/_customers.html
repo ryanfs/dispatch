@@ -1,8 +1,5 @@
-<div ng-repeat="customer in customers">
-  <a href="#/customers/{{customer.id}}">{{customer.name}}</a>
-</div>
-
-<h3 ng-click="show = !show"><a>Add New Customer</a></h3>
+<h1>My Customers</h1>
+<h3 ng-click="show = !show"><a> + Add New Customer</a></h3>
   <form ng-submit="addCustomer()" ng-show="show">
 
     <div class="form-group">
@@ -53,7 +50,6 @@
     <button type="submit" class="btn btn-primary">Create</button>
     </form>
 
-  <h3>My Customers</h3>
   <form>
     <div class="form-group">
       <div class="input-group">
@@ -63,7 +59,8 @@
     </div>
   </form>
 
-  <table class="table table-bordered table-striped">
+  <div class="table-responsive">
+  <table class="table table-bordered table-bordered table-hover">
     <thead>
       <tr>
         <td>
@@ -71,6 +68,13 @@
             Customer Title
             <span ng-show="sortType == 'title' && !sortReverse" class="caret"></span>
             <span ng-show="sortType == 'title' && sortReverse" class="caret-up"></span>
+          </a>
+        </td>
+        <td>
+          <a ng-click="sortType = 'company'; sortReverse = !sortReverse">
+            Company Name
+            <span ng-show="sortType == 'company' && !sortReverse" class="caret"></span>
+            <span ng-show="sortType == 'company' && sortReverse" class="caret-up"></span>
           </a>
         </td>
         <td>
@@ -83,8 +87,16 @@
         <td>Notes</td>
         <td>Address (line 1)</td>
         <td>Address (line 2)</td>
-        <td>City</td>
-        <td>State</td>
+        <td><a ng-click="sortType = 'city'; sortReverse = !sortReverse">City
+            <span ng-show="sortType == 'city' && !sortReverse" class="caret"></span>
+            <span ng-show="sortType == 'city' && sortReverse" class="caret-up"></span>
+            </a>
+          </td>
+        <td><a ng-click="sortType = 'state'; sortReverse = !sortReverse">State
+            <span ng-show="sortType == 'state' && !sortReverse" class="caret"></span>
+            <span ng-show="sortType == 'state' && sortReverse" class="caret-up"></span>
+            </a>
+          </td>
         <td>Zip</td>
       </tr>
     </thead>
@@ -92,6 +104,7 @@
     <tbody>
       <tr ng-repeat="customer in customers | orderBy:sortType:sortReverse | filter:search">
         <td>{{ customer.title }}</td>
+        <td>{{ customer.company }}</td>
         <td>{{ customer.contact_person }}</td>
         <td>{{ customer.notes }}</td>
         <td>{{ customer.line1 }}</td>
@@ -103,3 +116,4 @@
     </tbody>
 
   </table>
+  </div>
