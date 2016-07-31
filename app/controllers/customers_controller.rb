@@ -1,7 +1,7 @@
 class CustomersController < ApplicationController
 
   def index
-    respond_with Customer.all
+    @customers = Customer.all
   end
 
   def show
@@ -17,7 +17,7 @@ class CustomersController < ApplicationController
     @customer = Customer.new(customer_params)
     @customer.organization = current_user.organization
     @customer.create_address
-    @customer.address = Address.new(customer_params['address_attributes'])
+    @customer.address = Address.new(address_params)
     @customer.save
     respond_with @customer
   end
@@ -25,7 +25,11 @@ class CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:title, :company, :contact_person, :notes, address_attributes: [:line1, :line2, :city, :state, :zip])
+    params.require(:customer).permit(:title, :company, :contact_person, :notes)
+  end
+
+  def address_params
+    params.permit(:line1, :line2, :city, :state, :zip)
   end
 
 end

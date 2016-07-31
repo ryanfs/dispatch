@@ -21,12 +21,24 @@ function($scope, customers){
     if(!$scope.title || $scope.title === ''){ return; }
     customers.create({
       title: $scope.title,
+      company: $scope.company,
       contact_person: $scope.contact_person,
-      notes: $scope.notes
+      notes: $scope.notes,
+      line1: $scope.line1,
+      line2: $scope.line2,
+      city: $scope.city,
+      state: $scope.state,
+      zip: $scope.zip
     });
 
     $scope.title = '';
+    $scope.company = '';
     $scope.contact_person = '';
     $scope.notes = '';
+    $scope.line1 = '';
+    $scope.line2 = '';
+    $scope.city = '';
+    $scope.state = '';
+    $scope.zip = '';
   };
 }]);

@@ -9,7 +9,7 @@ function($http){
 
   o.getAll = function() {
     return $http.get('/customers.json').success(function(data) {
-      angular.copy(data, o.customers);
+      angular.copy(data.customers, o.customers);
     });
   };
   o.create = function(customer) {
