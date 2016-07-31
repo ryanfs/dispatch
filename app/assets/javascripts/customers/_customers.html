@@ -1,31 +1,67 @@
-<div class="page-header">
 <div ng-repeat="customer in customers">
-<a href="#/customers/{{customer.id}}">{{customer.name}}</a>
-</div>
-
-<h3>My Customers</h3>
-<div ng-repeat="customer in customers">
-      {{customer.id}}, {{customer.title}}, {{customer.contact_person}}, {{customer.notes}}
+  <a href="#/customers/{{customer.id}}">{{customer.name}}</a>
 </div>
 
 <h3 ng-click="show = !show"><a>Add New Customer</a></h3>
   <form ng-submit="addCustomer()" ng-show="show">
 
-  <div class="form-group">
-    <label>Title</label>
-    <input type="text" class="form-control" placeholder="Roselle Disposal - East Orange" ng-model="title"></input>
-  </div>
+    <div class="form-group">
+      <label>Title</label>
+      <input type="text" class="form-control" placeholder="Roselle Disposal - East Orange" ng-model="title"></input>
+    </div>
 
-  <div class="form-group">
-  <label>Contact Person</label>
-    <input type="text" class="form-control" placeholder="Keith Salerno" ng-model="contact_person"></input>
-  </div>
+    <div class="form-group">
+    <label>Contact Person</label>
+      <input type="text" class="form-control" placeholder="Keith Salerno" ng-model="contact_person"></input>
+    </div>
 
-  <div class="form-group">
-  <label>Notes</label>
-    <input type="textarea" class="form-control" placeholder="Usually late..." ng-model="notes"></input>
-  </div>
+    <div class="form-group">
+    <label>Notes</label>
+      <input type="textarea" class="form-control" placeholder="Usually late..." ng-model="notes"></input>
+    </div>
 
-  <button type="submit" class="btn btn-primary">Create</button>
+    <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+
+  <h3>My Customers</h3>
+  <form>
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+        <input type="text" class="form-control" placeholder="Search by customer title, name, address" ng-model="search">
+      </div>
+    </div>
   </form>
-</div>
+
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <td>
+          <a ng-click="sortType = 'title'; sortReverse = !sortReverse">
+            Customer Title
+            <span ng-show="sortType == 'title' && !sortReverse" class="caret"></span>
+            <span ng-show="sortType == 'title' && sortReverse" class="caret-up"></span>
+          </a>
+        </td>
+        <td>
+          <a ng-click="sortType = 'contact_person'; sortReverse = !sortReverse">
+          Contact Person
+            <span ng-show="sortType == 'contact_person' && !sortReverse" class="caret"></span>
+            <span ng-show="sortType == 'contact_person' && sortReverse" class="caret-up"></span>
+          </a>
+        </td>
+        <td>
+          Notes
+        </td>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr ng-repeat="customer in customers | orderBy:sortType:sortReverse | filter:search">
+        <td>{{ customer.title }}</td>
+        <td>{{ customer.contact_person }}</td>
+        <td>{{ customer.notes }}</td>
+      </tr>
+    </tbody>
+
+  </table>

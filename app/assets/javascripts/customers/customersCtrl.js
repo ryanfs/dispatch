@@ -4,11 +4,15 @@ angular.module('trash')
 'customers',
 function($scope, customers){
 
-  resolve: {
-    customer: ['$stateParams', 'customers', function($stateParams, customers){
-      return customers.get($stateParams.id);
-    }]
-  };
+  // resolve: {
+  //   customer: ['$stateParams', 'customers', function($stateParams, customers){
+  //     return customers.get($stateParams.id);
+  //   }]
+  // };
+
+  $scope.sortType = 'title';
+  $scope.sortReverse = false;
+  $scope.search = '';
 
   customers.getAll();
   $scope.customers = customers.customers;
