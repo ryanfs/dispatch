@@ -2,9 +2,7 @@ angular.module('trash')
 .controller('customersCtrl', [
 '$scope',
 'customers',
-'customer',
-function($scope, customers, customer){
-  $scope.customer = customer;
+function($scope, customers){
 
   resolve: {
     customer: ['$stateParams', 'customers', function($stateParams, customers){
@@ -12,17 +10,19 @@ function($scope, customers, customer){
     }]
   };
 
-  // $scope.addComment = function(){
-  //   if($scope.body === '') { return; }
-  //   posts.addComment(post.id, {
-  //     body: $scope.body,
-  //     author: 'user',
-  //   }).success(function(comment) {
-  //     $scope.post.comments.push(comment);
-  //   });
-  //   $scope.body = '';
-  // };
-  // $scope.incrementUpvotes = function(post) {
-  //   posts.upvoteComment(post, comment);
-  // };
+  customers.getAll();
+  $scope.customers = customers.customers;
+
+  $scope.addCustomer = function(){
+    if(!$scope.title || $scope.title === ''){ return; }
+    customers.create({
+      title: $scope.title,
+      contact_person: $scope.contact_person,
+      notes: $scope.notes
+    });
+
+    $scope.title = '';
+    $scope.contact_person = '';
+    $scope.notes = '';
+  };
 }]);

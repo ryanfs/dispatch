@@ -1,29 +1,25 @@
 class CustomersController < ApplicationController
 
   def index
-    @customers = Customer.all
+    respond_with Customer.all
   end
 
   def show
+    respond_with Customer.find(params[:id])
   end
 
   def new
     @customers = Customer.all
     @customer = Customer.new
-    @customer.create_address
   end
-
-
 
   def create
     @customer = Customer.new(customer_params)
     @customer.organization = current_user.organization
+    @customer.create_address
     @customer.address = Address.new(customer_params['address_attributes'])
-    if @customer.save
-      redirect_to @customer, notice: 'Customer was successfully created.'
-    else
-      render action: 'new'
-    end
+    @customer.save
+    respond_with @customer
   end
 
   private

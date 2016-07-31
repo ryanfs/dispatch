@@ -5,7 +5,7 @@ angular.module('trash')
 function($scope, customers){
 
   resolve: {
-    postPromise: ['customers', function(customers){
+    customersPromise: ['customers', function(customers){
       return customers.getAll();
     }]
   };

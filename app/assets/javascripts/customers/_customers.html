@@ -1,5 +1,31 @@
 <div class="page-header">
-  <h3>
-      {{customer.title}}
-  </h3>
+<div ng-repeat="customer in customers">
+<a href="#/customers/{{customer.id}}">{{customer.name}}</a>
+</div>
+
+<h3>My Customers</h3>
+<div ng-repeat="customer in customers">
+      {{customer.id}}, {{customer.title}}, {{customer.contact_person}}, {{customer.notes}}
+</div>
+
+<h3 ng-click="show = !show"><a>Add New Customer</a></h3>
+  <form ng-submit="addCustomer()" ng-show="show">
+
+  <div class="form-group">
+    <label>Title</label>
+    <input type="text" class="form-control" placeholder="Roselle Disposal - East Orange" ng-model="title"></input>
+  </div>
+
+  <div class="form-group">
+  <label>Contact Person</label>
+    <input type="text" class="form-control" placeholder="Keith Salerno" ng-model="contact_person"></input>
+  </div>
+
+  <div class="form-group">
+  <label>Notes</label>
+    <input type="textarea" class="form-control" placeholder="Usually late..." ng-model="notes"></input>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Create</button>
+  </form>
 </div>
