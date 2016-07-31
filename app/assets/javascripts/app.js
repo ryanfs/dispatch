@@ -8,7 +8,7 @@ function($stateProvider, $urlRouterProvider) {
     .state('home', {
       url: '/home',
       templateUrl: 'home/_home.html',
-      controller: 'MainCtrl'
+      controller: 'homeCtrl'
     })
     .state('customers', {
       url: '/customers',

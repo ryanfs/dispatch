@@ -327,10 +327,10 @@ figure {
  * Correct margin displayed oddly in IE 6/7.
  */
 
-form {
+/*form {
     margin: 0 auto;
     width: 95%;
-}
+}*/
 
 /**
  * Define consistent border, margin, and padding.

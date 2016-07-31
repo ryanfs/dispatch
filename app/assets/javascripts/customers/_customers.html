@@ -84,9 +84,7 @@
             <span ng-show="sortType == 'contact_person' && sortReverse" class="caret-up"></span>
           </a>
         </td>
-        <td>Notes</td>
-        <td>Address (line 1)</td>
-        <td>Address (line 2)</td>
+        <td>Address</td>
         <td><a ng-click="sortType = 'city'; sortReverse = !sortReverse">City
             <span ng-show="sortType == 'city' && !sortReverse" class="caret"></span>
             <span ng-show="sortType == 'city' && sortReverse" class="caret-up"></span>
@@ -98,6 +96,7 @@
             </a>
           </td>
         <td>Zip</td>
+        <td>Notes</td>
       </tr>
     </thead>
 
@@ -106,12 +105,11 @@
         <td>{{ customer.title }}</td>
         <td>{{ customer.company }}</td>
         <td>{{ customer.contact_person }}</td>
-        <td>{{ customer.notes }}</td>
-        <td>{{ customer.line1 }}</td>
-        <td>{{ customer.line2 }}</td>
+        <td>{{ customer.line1 }}<span ng-if="customer.line2">, {{ customer.line2 }}</span></td>
         <td>{{ customer.city }}</td>
         <td>{{ customer.state }}</td>
         <td>{{ customer.zip }}</td>
+        <td>{{ customer.notes }}</td>
       </tr>
     </tbody>
 
