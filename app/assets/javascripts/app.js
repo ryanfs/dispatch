@@ -1,4 +1,4 @@
-angular.module('trash', ['ui.router','templates'])
+angular.module('trash', ['ui.router','templates', 'Devise'])
 .config([
 '$stateProvider',
 '$urlRouterProvider',
@@ -14,7 +14,7 @@ function($stateProvider, $urlRouterProvider) {
       url: '/customers',
       templateUrl: 'customers/_customers.html',
       controller: 'customersCtrl'
-    });
+    })
 
     $urlRouterProvider.otherwise('home');
 }]);

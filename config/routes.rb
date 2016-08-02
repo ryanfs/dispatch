@@ -1,20 +1,25 @@
 Rails.application.routes.draw do
-  resources :tickets
   devise_for :users
-  root to: 'application#angular'
+      resources :customers
+      root to: 'application#angular'
 
-  devise_scope :user do
-    authenticated :user do
-      # root 'dashboard#index', as: :authenticated_root
-      get '/users/sign_out' => 'devise/sessions#destroy'
-      resources :customers, :addresses, :tickets, :products, :services, :trucks
-      #resources :events, :contacts, :leadgens
-    end
-
-    unauthenticated do
-      root 'devise/sessions#new', as: :unauthenticated_root
-    end
+  resources :organizations, only: [:create, :index, :show] do
+    resources :customers
   end
+
+
+  # devise_scope :user do
+  #   authenticated :user do
+  #     # root 'dashboard#index', as: :authenticated_root
+  #     get '/users/sign_out' => 'devise/sessions#destroy'
+  #     resources :customers, :addresses, :tickets, :products, :services, :trucks
+  #     #resources :events, :contacts, :leadgens
+  #   end
+
+  #   unauthenticated do
+  #     root 'devise/sessions#new', as: :unauthenticated_root
+  #   end
+  # end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

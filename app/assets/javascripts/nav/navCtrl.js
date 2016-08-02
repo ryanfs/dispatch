@@ -3,11 +3,13 @@ angular.module('trash')
   '$scope',
   'Auth',
   function($scope, Auth) {
-    $scope.signedIn = Auth.isAuthenticated;
+    // $scope.signedIn = Auth.isAuthenticated;
+    $scope.signedIn = true;
     $scope.logout = Auth.logout;
 
     Auth.currentUser().then(function (user) {
-      $scope.user = user;
+      // $scope.user = user;
+      $scope.user = {'name': 'ryan'};
     });
 
     $scope.on('devise:new-registration',function(e, user) {

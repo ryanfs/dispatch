@@ -5,6 +5,7 @@ class CreateCustomers < ActiveRecord::Migration
       t.string :company
       t.references :address
       t.string :contact_person
+      t.string :phone
       t.text :notes
       t.references :organization
 

@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20160725005004) do
     t.string   "company"
     t.integer  "address_id"
     t.string   "contact_person"
+    t.string   "phone"
     t.text     "notes"
     t.integer  "organization_id"
     t.datetime "created_at",      null: false
