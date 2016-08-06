@@ -1,29 +1,31 @@
 .wrapper {
-    width: 90%;
+    width: 95%;
     margin: 0 auto;
 }
 
 @import "bootstrap-sass-official/assets/stylesheets/bootstrap-sprockets";
 @import "bootstrap-sass-official/assets/stylesheets/bootstrap";
 
-// DEMO DRAG AND DROP STYLES
-
+.move {
+    cursor: move;
+}
+// DRAGGABLE DRAG AND DROP STYLES
 /**
  * For the correct positioning of the placeholder element, the dnd-list and
  * it's children must have position: relative
  */
-.typesDemo ul[dnd-list],
-.typesDemo ul[dnd-list] > li {
-  position: relative;
+.simpleDemo ul[dnd-list],
+.simpleDemo ul[dnd-list] > li {
+    position: relative;
 }
 
 /**
  * The dnd-list should always have a min-height,
  * otherwise you can't drop to it once it's empty
  */
-.typesDemo ul[dnd-list] {
-  min-height: 42px;
-  padding-left: 0px;
+.simpleDemo ul[dnd-list] {
+    min-height: 42px;
+    padding-left: 0px;
 }
 
 /**
@@ -32,8 +34,8 @@
  * sense to hide it to give the user the feeling
  * that he's actually moving it.
  */
-.typesDemo ul[dnd-list] .dndDraggingSource {
-  display: none;
+.simpleDemo ul[dnd-list] .dndDraggingSource {
+    display: none;
 }
 
 /**
@@ -41,11 +43,10 @@
  * added to the dnd-list while the user is dragging
  * over it.
  */
-.typesDemo ul[dnd-list] .dndPlaceholder {
-  display: block;
-  background-color: #ddd;
-  padding: 10px 15px;
-  min-height: 42px;
+.simpleDemo ul[dnd-list] .dndPlaceholder {
+    display: block;
+    background-color: #ddd;
+    min-height: 42px;
 }
 
 /**
@@ -55,63 +56,106 @@
  * half of the element we are dragging over. In other
  * browsers we can use event.offsetY for this.
  */
-.typesDemo ul[dnd-list] li {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-top-right-radius: 4px;
-  border-top-left-radius: 4px;
-  display: block;
-  margin-bottom: -1px;
-
-  /* Disable text selection if item is not draggable */
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.typesDemo ul[dnd-list] li dnd-nodrag {
-  display: block;
-  padding: 10px 15px;
+.simpleDemo ul[dnd-list] li {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
 }
 
 /**
- * Gender-specifc background
+ * Show selected elements in green
  */
-.typesDemo ul[dnd-list] li.background-man {
-  background-color: #CAE0FC;
+.simpleDemo ul[dnd-list] li.selected {
+    // background-color: #dff0d8;
+    color: #3c763d;
 }
 
-.typesDemo ul[dnd-list] li.background-woman {
-  background-color: #FFE2F5;
+.simpleDemo ul[dnd-list] li:hover {
+    background-color: #dff0d8;
+    color: #3c763d;
 }
 
-.typesDemo ul[dnd-list] input.background-man {
-  background-color: #D8E9FF;
-  color: #2F4D99;
+
+// END DRAGGABLE DRAG AND DROP STYLES
+
+
+// UI TREE DRAG AND DROP STYLES
+
+.btn {
+    margin-right: 8px;
 }
 
-.typesDemo ul[dnd-list] input.background-woman {
-  background-color: #FFF0FA;
-  color: #D84FA7;
+.angular-ui-tree-handle {
+    background: #f8faff;
+    border: 1px solid #dae2ea;
+    color: #7c9eb2;
+    padding: 10px 10px;
 }
 
-/**
- * Handle positioning
- */
-.typesDemo .handle {
-  cursor: move;
-  position: absolute;
-  top: 14px;
+.angular-ui-tree-handle:hover {
+    color: #438eb9;
+    background: #f4f6f7;
+    border-color: #dce2e8;
 }
 
-.typesDemo .name {
-  margin-left: 20px;
+.angular-ui-tree-placeholder {
+    background: #f0f9ff;
+    border: 2px dashed #bed2db;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
-// END DEMO DRAG AND DROP STYLES
+tr.angular-ui-tree-empty {
+    height:100px
+}
+
+.group-title {
+    background-color: #687074 !important;
+    color: #FFF !important;
+}
+
+
+/* --- Tree --- */
+.tree-node {
+    border: 1px solid #dae2ea;
+    background: #f8faff;
+    color: #7c9eb2;
+}
+
+.nodrop {
+    background-color: #f2dede;
+}
+
+.tree-node-content {
+    margin: 10px;
+}
+.tree-handle {
+    padding: 10px;
+    background: #428bca;
+    color: #FFF;
+    margin-right: 10px;
+}
+
+.angular-ui-tree-handle:hover {
+    cursor: move;
+}
+
+.angular-ui-tree-placeholder {
+    background: #f0f9ff;
+    border: 2px dashed #bed2db;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+// END DRAG AND DROP
+
+
 
 .caret-up {
     width: 0;

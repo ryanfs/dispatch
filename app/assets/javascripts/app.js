@@ -1,4 +1,4 @@
-angular.module('trash', ['ui.router','templates', 'Devise'])
+angular.module('trash', ['ui.router','templates', 'Devise', 'ui.tree', 'dndLists'])
 .config([
 '$stateProvider',
 '$urlRouterProvider',

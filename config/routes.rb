@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   root to: 'application#angular'
+  resources :customers
 
-  resources :posts, only: [:create, :index, :show] do
+  resources :tickets, only: [:create, :index, :show] do
     resources :organizations, only: [:create, :index, :show] do
     resources :customers
   end

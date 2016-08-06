@@ -15,9 +15,6 @@ gem 'bootstrap-sass', '~> 3.3.1.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'devise', '~> 3.4', '>= 3.4.1'
-source "https://rails-assets.org" do
-  gem "rails-assets-angular-devise"
-end
 
 group :development, :test do
   gem 'pry'

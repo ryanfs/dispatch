@@ -1,101 +1,29 @@
-// angular.module('trash')
-// .controller('homeCtrl', [
-// '$scope',
-// 'customers',
-// function($scope, customers){
+angular.module('trash')
+.controller('homeCtrl', [
+'$scope',
+function($scope){
 
 
+    $scope.models = {
+        selected: null,
+        lists: {"One": [], "Two": []}
+    };
 
-// }]);
 
-(function () {
-  'use strict';
+    // Generate initial model
+    for (var i = 1; i <= 3; ++i) {
+        $scope.models.lists.One.push({label: "Location A" + i, id: i});
+        $scope.models.lists.Two.push({label: "Location B" + i, id: i + 3});
+    }
 
-  angular.module('trash')
-    .controller('homeCtrl', [
-    '$scope',
-    'customers',
-    function ($scope, customers) {
-      $scope.remove = function (scope, customers) {
-        scope.remove();
-      };
+    $scope.newTicket = {
+      label: "Location ?",
+      id: 2,
+    };
 
-      $scope.newSubItem = function (scope) {
-        var nodeData = scope.$modelValue;
-        nodeData.nodes.push({
-          id: nodeData.id * 10 + nodeData.nodes.length,
-          title: nodeData.title + '.' + (nodeData.nodes.length + 1),
-          nodes: []
-        });
-      };
+    // Model to JSON for demo purpose
+    $scope.$watch('models', function(model) {
+        $scope.modelAsJson = angular.toJson(model, true);
+    }, true);
 
-      $scope.visible = function (item) {
-        return !($scope.query && $scope.query.length > 0
-        && item.title.indexOf($scope.query) == -1);
-
-      };
-
-      $scope.findNodes = function () {
-
-      };
-
-      $scope.data = [{
-        'id': 1,
-        'title': 'node1',
-        'nodes': [
-          {
-            'id': 11,
-            'title': 'node1.1',
-            'nodes': [
-              {
-                'id': 111,
-                'title': 'node1.1.1',
-                'nodes': []
-              }
-            ]
-          },
-          {
-            'id': 12,
-            'title': 'node1.2',
-            'nodes': []
-          }
-        ]
-      }, {
-        'id': 2,
-        'title': 'node2',
-        'nodes': [
-          {
-            'id': 21,
-            'title': 'node2.1',
-            'nodes': []
-          },
-          {
-            'id': 22,
-            'title': 'node2.2',
-            'nodes': []
-          }
-        ]
-      }, {
-        'id': 3,
-        'title': 'node3',
-        'nodes': [
-          {
-            'id': 31,
-            'title': 'node3.1',
-            'nodes': []
-          }
-        ]
-      }, {
-        'id': 4,
-        'title': 'node4',
-        'nodes': [
-          {
-            'id': 41,
-            'title': 'node4.1',
-            'nodes': []
-          }
-        ]
-      }];
-    }]);
-
-}());
+}]);

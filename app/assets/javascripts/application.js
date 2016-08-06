@@ -13,7 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require angular/angular
+//= require angular-drag-and-drop-lists
+//= require angular-devise
 //= require angular-rails-templates
 //= require angular-ui-router
-//= require angular-devise
+//= require angular-ui-tree
 //= require_tree .

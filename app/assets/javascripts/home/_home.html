@@ -1,18 +1,49 @@
-<h2><a href="#/customers">My Customers</a></h2>
-
-<div ui-tree>
-  <ol ui-tree-nodes="" ng-model="list">
-    <li ng-repeat="item in list" ui-tree-node>
-      <div ui-tree-handle>
-        {{item.title}}
-      </div>
-      <ol ui-tree-nodes="" ng-model="item.items">
-        <li ng-repeat="subItem in item.items" ui-tree-node>
-          <div ui-tree-handle>
-            {{subItem.title}}
-          </div>
-        </li>
-      </ol>
-    </li>
-  </ol>
+<div class="page-header">
+  <h1>Trash!</h1>
 </div>
+
+  <div class="toolbox box box-grey box-padding col-md-2" style="border:1px solid black">
+      <h3>New Ticket</h3>
+      <div>
+          <!-- The toolbox only allows to copy objects, not move it. After a new
+               element was created, dnd-copied is invoked and we generate the next id -->
+          <div ng-if="newTicket"
+              dnd-draggable="newTicket"
+              dnd-effect-allowed="copy"
+              dnd-copied="newTicket.id = newTicket.id + 1"
+              class="move"
+              >
+              <button type="button" class="btn btn-default btn-lg move" disabled="disabled">{{newTicket.label}}</button>
+          </div>
+      </div>
+  </div>
+
+  <div class="simpleDemo row" >
+      <div class="col-md-8">
+          <div class="row">
+              <div ng-repeat="(listName, list) in models.lists" class="col-md-3">
+                  <div class="panel panel-info">
+                      <div class="panel-heading">
+                          <h3 class="panel-title">Truck {{listName}}</h3>
+                      </div>
+                        <ul dnd-list="list">
+                            <!-- The dnd-draggable directive makes an element draggable and will
+                                 transfer the object that was assigned to it. If an element was
+                                 dragged away, you have to remove it from the original list
+                                 yourself using the dnd-moved attribute -->
+                            <li ng-repeat="item in list"
+                                dnd-draggable="item"
+                                dnd-moved="list.splice($index, 1)"
+                                dnd-effect-allowed="move"
+                                dnd-selected="models.selected = item"
+                                ng-class="{'selected': models.selected === item}"
+                                class="move"
+                                >
+                                {{item.label}}, {{item.id}}
+                            </li>
+                        </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
