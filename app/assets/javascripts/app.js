@@ -1,4 +1,4 @@
-angular.module('trash', ['ui.router','templates', 'Devise', 'ui.tree', 'dndLists'])
+angular.module('trash', ['ui.router','templates', 'Devise', 'dndLists', 'ui.bootstrap'])
 .config([
 '$stateProvider',
 '$urlRouterProvider',
@@ -14,6 +14,10 @@ function($stateProvider, $urlRouterProvider) {
       url: '/customers',
       templateUrl: 'customers/_customers.html',
       controller: 'customersCtrl'
+    })
+    .state('ticketModal', {
+      url: '/tickets/newTicketCtrl.js',
+      controller: 'newTicketCtrl'
     })
     .state('login', {
       url: '/login',

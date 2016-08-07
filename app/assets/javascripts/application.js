@@ -18,4 +18,5 @@
 //= require angular-rails-templates
 //= require angular-ui-router
 //= require angular-ui-tree
+//= require angular-bootstrap
 //= require_tree .
