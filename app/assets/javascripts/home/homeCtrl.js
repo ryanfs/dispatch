@@ -25,6 +25,12 @@ function($scope, $uibModal){
         unassigned: {"One": []}
     };
 
+    $scope.dynamicPopover = {
+      content: 'Hello, World!',
+      templateUrl: 'ticketPopoverTemplate.html',
+      title: 'Title'
+    };
+
 
     // Generate initial model
     for (var i = 1; i <= 3; ++i) {
@@ -48,8 +54,8 @@ function($scope, $uibModal){
     }, true);
 
 }])
-.directive('ticket', function() {
+.directive('ticketPreview', function() {
   return {
-    template: '<ul dnd-list="list"><li ng-repeat="item in list" dnd-draggable="item" dnd-moved="list.splice($index, 1)" dnd-effect-allowed="move" dnd-selected="models.selected = item" ng-class="{\'selected\': models.selected === item}" class="move" > <strong>{{item.label}}</strong><br/> {{item.id}} </li> </ul>'
+    template: '<ul dnd-list="list"><li ng-repeat="item in list" dnd-draggable="item" dnd-moved="list.splice($index, 1)" dnd-effect-allowed="move" dnd-selected="models.selected = item" ng-class="{\'selected\': models.selected === item}" class="move" uib-popover="{{item.id}}" popover-title="{{item.label}}" popover-trigger="\'mouseenter\'" > <strong>{{item.label}}</strong><br/> {{item.id}} </li> </ul>'
   };
 });
