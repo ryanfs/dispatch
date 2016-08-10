@@ -3,56 +3,57 @@
 </div>
 
 <div class="modal-body">
-
   <div class="modal-wrapper">
 
-  <div class="form-group">
-        <label>Title</label>
+  <form ng-submit="addTicket()" class="form-inline new-ticket-form" >
+
+      <div class="form-group half">
+        <label>Customer</label>
+        <input type="text" class="form-control" placeholder="Stop and Shop - East Orange" ng-model="customer"></input>
+      </div>
+
+      <div class="form-group half">
+        <label>Ticket Name</label>
         <input type="text" class="form-control" placeholder="Pick up - East Orange" ng-model="title"></input>
       </div>
 
-      <div class="form-group">
+      <div class="form-group half">
         <label>Service</label>
         <input type="text" class="form-control" placeholder="Roll off" ng-model="service"></input>
       </div>
 
-      <div class="form-group">
-      <label>Customer</label>
-        <input type="text" class="form-control" placeholder="Stop and Shop - East Orange" ng-model="customer"></input>
-      </div>
 
-      <div class="form-group">
+      <div class="form-group half">
       <label>Product ID</label>
         <input type="text" class="form-control" placeholder="Truck 36" ng-model="product"></input>
       </div>
 
-      <div class="form-group">
+      <div class="form-group long">
         <label>Address</label>
         <input type="text" class="form-control" ng-model="line1" placeholder="1 Infinite Loop">
       </div>
-      <div class="form-group">
+
+      <div class="form-group short">
         <label>City</label>
         <input type="text" class="form-control" ng-model="city" placeholder="Cupertino">
       </div>
 
-      <div class="form-group">
+      <div class="form-group tiny">
         <label>State</label>
         <input type="text" class="form-control" ng-model="state" placeholder="NJ">
       </div>
 
-      <div class="form-group">
+      <div class="form-group zip">
         <label>Zip Code</label>
         <input type="text" class="form-control" ng-model="zip" placeholder="10015">
       </div>
 
   </div>
-
 </div>
 
 <div class="modal-footer">
-    <button type="submit" class="btn btn-primary">Create</button>
+    <button type="submit" class="btn btn-primary">Add Ticket</button>
     </form>
-    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
     <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
   <form>
 

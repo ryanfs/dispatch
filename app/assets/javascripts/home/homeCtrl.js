@@ -2,7 +2,8 @@ angular.module('trash')
 .controller('homeCtrl', [
 '$scope',
 '$uibModal',
-function($scope, $uibModal){
+'$sce',
+function($scope, $uibModal, $sce){
 
   $scope.open = function (size) {
 
@@ -27,8 +28,7 @@ function($scope, $uibModal){
 
     $scope.dynamicPopover = {
       content: 'Hello, World!',
-      templateUrl: 'ticketPopoverTemplate.html',
-      title: 'Title'
+      templateUrl: 'ticketPopoverTemplate.html'
     };
 
 
@@ -55,7 +55,13 @@ function($scope, $uibModal){
 
 }])
 .directive('ticketPreview', function() {
+  var htmlTemplate = '<script type="text/ng-template" id="ticketPopoverTemplate.html"><div>Truck {{item.id}}</div><div class="form-group">Custmer X<br /><strong>142 Oak Street</strong> <br />{{item.id}}</div></script>';
+  var markup = '<ul dnd-list="list"><li ng-repeat="item in list" dnd-draggable="item" dnd-moved="list.splice($index, 1)" dnd-effect-allowed="move" dnd-selected="models.selected = item" ng-class="{\'selected\': models.selected === item}" class="move"';
+  var content = '<strong>{{item.label}}</strong><br/> {{item.id}}</li> </ul>' ;
+  var popup = 'uib-popover="{{item.id}} and more stuff" popover-title="{{item.label}}" popover-trigger="\'mouseenter\'" > ';
+  var popup2 = 'uib-popover-template="dynamicPopover.templateUrl" popover-title="{{item.label}}" popover-trigger="\'mouseenter\'" > '
+
   return {
-    template: '<ul dnd-list="list"><li ng-repeat="item in list" dnd-draggable="item" dnd-moved="list.splice($index, 1)" dnd-effect-allowed="move" dnd-selected="models.selected = item" ng-class="{\'selected\': models.selected === item}" class="move" uib-popover="{{item.id}}" popover-title="{{item.label}}" popover-trigger="\'mouseenter\'" > <strong>{{item.label}}</strong><br/> {{item.id}} </li> </ul>'
+    template: htmlTemplate + markup + popup2 + content
   };
 });

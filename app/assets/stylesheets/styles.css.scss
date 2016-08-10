@@ -11,6 +11,10 @@
 @import "bootstrap-sass-official/assets/stylesheets/bootstrap-sprockets";
 @import "bootstrap-sass-official/assets/stylesheets/bootstrap";
 
+.popover {
+    width: 275px;
+}
+
 .move {
     cursor: move;
 }
@@ -34,12 +38,29 @@
     padding: 10px;
 }
 
-.new-customer-form .short {
-    width: 10%;
+.new-ticket-form .half {
+    width: 45%;
+    margin: 2%;
 }
 
-.new-customer-form .long {
-    width: 58%;
+.new-ticket-form .long {
+    width: 98%;
+    margin: 2%;
+}
+
+.new-ticket-form .short {
+    width: 35%;
+    margin: 2%;
+}
+
+.new-ticket-form .zip {
+    width: 15%;
+    margin: 2%;
+}
+
+.new-ticket-form .tiny {
+    width: 4%;
+    margin: 2%;
 }
 
 .btn-create-ticket {
