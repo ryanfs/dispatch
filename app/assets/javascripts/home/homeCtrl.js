@@ -28,13 +28,13 @@ function($scope, $uibModal){
 
     // Generate initial model
     for (var i = 1; i <= 3; ++i) {
-        $scope.models.lists.One.push({label: "Location A" + i, id: i});
-        $scope.models.lists.Two.push({label: "Location B" + i, id: i + 3});
-        $scope.models.lists.Three.push({label: "Location C" + i, id: i + 6});
-        $scope.models.lists.Four.push({label: "Location D" + i, id: i + 9});
-        $scope.models.lists.Five.push({label: "Location D" + i, id: i + 12});
-        $scope.models.lists.Six.push({label: "Location E" + i, id: i + 15});
-        $scope.models.unassigned.One.push({label: "Location F" + i, id: i + 18});
+        $scope.models.lists.One.push({label: "Location A" + i, id: "Service " + i});
+        $scope.models.lists.Two.push({label: "Location B" + i, id: "Service " + i + 3});
+        $scope.models.lists.Three.push({label: "Location C" + i, id: "Service " + i + 6});
+        $scope.models.lists.Four.push({label: "Location D" + i, id: "Service " + i + 9});
+        $scope.models.lists.Five.push({label: "Location D" + i, id: "Service " + i + 12});
+        $scope.models.lists.Six.push({label: "Location E" + i, id: "Service " + i + 15});
+        $scope.models.unassigned.One.push({label: "Location F" + i, id: "Service " + i + 18});
     }
 
     $scope.newTicket = function () {
@@ -47,4 +47,9 @@ function($scope, $uibModal){
         $scope.modelAsJson = angular.toJson(model, true);
     }, true);
 
-}]);
+}])
+.directive('ticket', function() {
+  return {
+    template: '<ul dnd-list="list"><li ng-repeat="item in list" dnd-draggable="item" dnd-moved="list.splice($index, 1)" dnd-effect-allowed="move" dnd-selected="models.selected = item" ng-class="{\'selected\': models.selected === item}" class="move" > <strong>{{item.label}}</strong><br/> {{item.id}} </li> </ul>'
+  };
+});
