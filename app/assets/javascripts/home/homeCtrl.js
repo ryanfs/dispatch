@@ -22,7 +22,7 @@ function($scope, $uibModal, $sce){
 
     $scope.models = {
         selected: null,
-        lists: {"One": [], "Two": [], "Three": [], "Four": [], "Five": [], "Six": [],},
+        lists: {"One": [], "Two": [], "Three": [], "Four": [], "Five": [], "Six": [], "test": []},
         unassigned: {"One": []}
     };
 
@@ -47,6 +47,13 @@ function($scope, $uibModal, $sce){
       var ticket = {label: "Location ?", id: 20};
       $scope.models.unassigned.One.push(ticket);
     };
+
+    $scope.newList = function () {
+      var list = {"Seven": []};
+      for (var key in list) {
+        $scope.models.lists[String(key)] = [];
+      }
+    }
 
     // Model to JSON for demo purpose
     $scope.$watch('models', function(model) {

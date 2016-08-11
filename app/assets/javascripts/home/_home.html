@@ -1,9 +1,9 @@
 <div class="page-header">
-  <h1>Trash!</h1>
+  <h1>Trash!&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-default" ng-click="newList()"> + Add New List</button></h1>
 </div>
 
-  <div class="left-pane" class="left-pane">
-      <button type="button" class="btn btn-default btn-create-ticket" ng-click="open('lg')"> + Add New Ticket</button>
+<!--   <div class="left-pane" class="left-pane">
+
       <hr >
 
       <div ng-repeat="list in models.unassigned" class="ticket simpleDemo">
@@ -15,16 +15,17 @@
           </div>
       </div>
 
-  </div>
+  </div> -->
 
   <div class="ticket-wrapper">
     <div class="simpleDemo row" >
-      <div ng-repeat="(listName, list) in models.lists" ng-if="listName!='Unassigned'" class="col-md-2 ticket">
+      <div ng-repeat="(listName, list) in models.lists" ng-if="listName!='Unassigned'" class="col-md-1 ticket">
           <div class="panel panel-info">
               <div class="panel-heading">
                   <h3 class="panel-title">Truck {{listName}}</h3>
               </div>
               <ticket-preview></ticket-preview>
+              <p ng-click="open('lg')" class="add-ticket"><a>+ Add ticket</a></p>
           </div>
       </div>
   </div>

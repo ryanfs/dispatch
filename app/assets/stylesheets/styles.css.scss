@@ -11,6 +11,12 @@
 @import "bootstrap-sass-official/assets/stylesheets/bootstrap-sprockets";
 @import "bootstrap-sass-official/assets/stylesheets/bootstrap";
 
+.add-ticket {
+    font-size: 10px;
+    margin: 5px;
+    padding: 0px 5px;
+}
+
 .popover {
     width: 275px;
 }
@@ -80,13 +86,14 @@
 }
 
 .ticket-wrapper {
-    margin-left: 225px;
+    // margin-left: 225px;
     height: 100%;
     width: auto;
 }
 
 .ticket {
     margin-bottom: 30px;
+    padding: 2px!important;
 }
 
 // DRAGGABLE DRAG AND DROP STYLES
@@ -106,6 +113,7 @@
 .simpleDemo ul[dnd-list] {
     min-height: 42px;
     padding-left: 0px;
+    font-size: 11px;
 }
 
 /**
@@ -353,6 +361,10 @@ label {
 
 .panel-holder-holder {
     margin: 0 0 25px 0;
+}
+
+.panel-title {
+    font-size: 12px!important;
 }
 
 .actions {
